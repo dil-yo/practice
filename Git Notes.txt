@@ -1,0 +1,136 @@
+Git:
+>Source Code Management
+>Distributed Version Control System (earlier SVN)
+
+Assume 4 developers are working on one code, each person waiting for antoher to update their code, they were unable to update at sametime.
+Dependent on each other,there may be chances to lose the code also.
+
+Then they started using central repository, so each person updating thier code in central repository system.
+Again facing dependency issue till other developers to update their code.
+
+To overcome these issues (over SVN), Distributed Version Control System introduded.
+Here there will be Central Repository and each developers will be having their own local repository (replica of Central Repository).
+They will just update their local repository, they will test locally and once done they will push it into central repository.
+So there will be no dependency on each developers
+We can see who updated the code, what has been updated, full history on Central Repository.
+
+Git is Opensource tool.
+It's fast.
+Scalable (n no of members can be used).
+Easy to maintain code.
+Can maintain large projects efficiently.
+
+###########################################################
+
+# Set the email ID globally (applies to all repositories)
+git config --global user.email "new_email@example.com"
+
+# Set the email ID for a specific repository
+git config user.email "new_email@example.com"
+
+###########################################################
+
+Download the Git and install it
+#git	--> if installed properly it will show the some output
+
+Create one directory and make it as Git repository:
+#cd E:\Devops\2.New Batch Videos\Git\demo-git
+#git init
+Initialized empty Git repository in E:/Devops/2.New Batch Videos/Git/demo-git/.git/
+
+#git status		--> shows the on which branch you're, anything to commint and no files has been created to commit
+				--> red color=working area; green color=staging area
+On branch master
+No commits yet
+nothing to commit (create/copy files and use "git add" to track)
+
+###########################################################
+
+Local Repository:
+>Working Area
+>Staging Area
+>Local Git Repository
+
+#git init	> from the working directory
+#touch 1.yaml > create files
+#git status		
+#git add 1.yaml > moving file 1.yaml to staging area
+#git status
+#git commit -m "create first yaml file" > moving file to local repository
+#touch 2.yaml 3.yaml
+#vi 1.yaml
+#git status
+#git add *		> to move multiple files into staging area or git add .
+#git status
+#git commit -m "add 2 n 3 file, file 1.yaml updated"
+#git log
+
+##########################################################
+
+Reverting the changes done at staging area and working area
+
+#vi 2.yaml	> updating some data
+#git status	> it's red color and saying 2.yaml is modified
+#git add 2.yaml 	> moving 2.yaml to staging area
+
+Now reverting the changes
+#git reset HEAD 2.yaml	> moving 2.yaml from staging area to working area
+#git status > says file is modified (earlier status because we moved the file to working area)
+#git restore 2.yaml	> reverting the changes done in 2.yaml file or #git checkout 2.yaml
+
+########################################################
+
+#mkdir /demo/test
+#git mv 3.yaml test/ 	> file moved to test directory
+#git rm 2.yaml			> file removed
+
+#git status
+#git commit -m "file moved and file deleted"
+
+########################################################
+
+Branching:
+
+#git branch
+#git branch my-first-branch
+#git branch
+
+#git checkout my-first-branch		--> to switch to other branch
+#git branch
+
+#touch /demo/test/4.yaml			--> creating file 
+#git add *
+#git commit -m "created file on my-first-branch"
+
+Now if see files it shows all files because I'm in my-first-branch
+#ls -l or #tree
+
+#git checkout master				--> switch to master branch
+#tree or #ls -l						--> It won't show newly created file because we create it on my-first-branch and now I'm in master branch
+
+Now other user working on my-first-branch locally, once work is done they merge the code with master
+This is called maintaining versioning.
+
+#git checkout -b my-second-branch	--> creates new branch called my-second-branch and switch to new branch
+
+########################################################
+
+Merging
+
+#git branch							--> using my-first-branch and created some files
+#git checkout master				
+#tree								--> my-first-branch not yet merged with master branch and can't see files of my-first-branch
+
+#git merge my-first-branch
+#git branch							--> using master branch
+#tree								--> can see files merged with master now
+
+########################################################
+
+if get git conflict error, open the mentioned file, remove the lines at the end and add & commit it.
+
+###########################################################
+
+
+
+
